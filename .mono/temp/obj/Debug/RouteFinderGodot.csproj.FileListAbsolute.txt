@@ -1,0 +1,9 @@
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\bin\Debug\RouteFinderGodot.dll
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\bin\Debug\RouteFinderGodot.pdb
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\bin\Debug\Priority Queue.dll
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\bin\Debug\Priority Queue.pdb
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\obj\Debug\RouteFinderGodot.csprojAssemblyReference.cache
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\obj\Debug\RouteFinderGodot.csproj.CoreCompileInputs.cache
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\obj\Debug\RouteFinderGodot.csproj.CopyComplete
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\obj\Debug\RouteFinderGodot.dll
+C:\Users\buikr\Desktop\RouteFinderGodot\.mono\temp\obj\Debug\RouteFinderGodot.pdb

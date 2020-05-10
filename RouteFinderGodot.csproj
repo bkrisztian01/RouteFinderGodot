@@ -59,6 +59,10 @@
     <Compile Include="Scripts\GlobalVars.cs" />
     <Compile Include="Scripts\Astar.cs" />
     <Compile Include="Scripts\Constants.cs" />
+    <Compile Include="Scripts\Map.cs" />
+    <Compile Include="Scripts\Generator.cs" />
+    <Compile Include="Scripts\Room.cs" />
+    <Compile Include="Scripts\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

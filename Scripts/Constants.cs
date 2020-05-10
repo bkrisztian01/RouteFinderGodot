@@ -11,5 +11,6 @@ namespace Program
         public const int Start = 2;
         public const int End = 3;
         public const int Route = 4;
+        public const int Player = 5;
     }
 }

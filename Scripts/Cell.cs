@@ -12,6 +12,7 @@ namespace Program
         public override void _Ready()
         {
             animation = GetNode<AnimationPlayer>("AnimationPlayer");
+            animation.Play("Clear");
         }
 
         public void InitializeTile(int x, int y) 
@@ -25,65 +26,79 @@ namespace Program
             switch (status) 
             {
                 case Constants.Clear:
-                    if (Global.StartLocation == Location)
+                    if (Global.Map.StartLocation == Location)
                     {
-                        Global.StartLocation = new Vector2(-1, -1);
+                        Global.Map.StartLocation = new Vector2(-1, -1);
                     }
-                    else if (Global.EndLocation == Location)
+                    else if (Global.Map.EndLocation == Location)
                     {
-                        Global.StartLocation = new Vector2(-1, -1);
+                        Global.Map.StartLocation = new Vector2(-1, -1);
                     }
-                    else if (Global.Blocks.Contains(Location))
+                    else if (Global.Map.Blocks.Contains(Location))
                     {
-                        Global.Blocks.Remove(Location);
+                        Global.Map.Blocks.Remove(Location);
                     }
                     animation.Play("Clear");
                     break;
 
                 case Constants.Block:
-                    if (!Global.Blocks.Contains(Location))
+                    if (!Global.Map.Blocks.Contains(Location))
                     {
-                        animation.Play("Block");
-                        Global.Blocks.Add(Location);
-                        if (Location.Equals(Global.StartLocation))
-                            Global.StartLocation = new Vector2(-1, -1);
-                        else if (Location.Equals(Global.EndLocation))
-                            Global.EndLocation = new Vector2(-1, -1);
+                        Global.Map.Blocks.Add(Location);
+                        if (Location.Equals(Global.Map.StartLocation))
+                            Global.Map.StartLocation = new Vector2(-1, -1);
+                        else if (Location.Equals(Global.Map.EndLocation))
+                            Global.Map.EndLocation = new Vector2(-1, -1);
                     }
+                    animation.Play("Block");
                     break;
 
                 case Constants.Start:
-                    if (!Global.StartLocation.Equals(new Vector2(-1, -1)))
-                        Global.Grid[(int)Global.StartLocation.x, (int)Global.StartLocation.y].animation.Play("Clear");
+                    if (!Global.Map.StartLocation.Equals(new Vector2(-1, -1)))
+                        Global.Grid[(int)Global.Map.StartLocation.x, (int)Global.Map.StartLocation.y].animation.Play("Clear");
 
-                    if (Global.Blocks.Contains(Location))
-                        Global.Blocks.Remove(Location);
+                    if (Global.Map.Blocks.Contains(Location))
+                        Global.Map.Blocks.Remove(Location);
 
-                    Global.StartLocation = Location;
+                    Global.Map.StartLocation = Location;
 
-                    if (Global.StartLocation.Equals(Global.EndLocation))
-                        Global.EndLocation = new Vector2(-1, -1);
+                    if (Global.Map.StartLocation.Equals(Global.Map.EndLocation))
+                        Global.Map.EndLocation = new Vector2(-1, -1);
 
                     animation.Play("Start");
                     break;
 
                 case Constants.End:
-                    if (!Global.EndLocation.Equals(new Vector2(-1, -1)))
-                        Global.Grid[(int)Global.EndLocation.x, (int)Global.EndLocation.y].animation.Play("Clear");
+                    if (!Global.Map.EndLocation.Equals(new Vector2(-1, -1)))
+                        Global.Grid[(int)Global.Map.EndLocation.x, (int)Global.Map.EndLocation.y].animation.Play("Clear");
 
-                    if (Global.Blocks.Contains(Location))
-                        Global.Blocks.Remove(Location);
+                    if (Global.Map.Blocks.Contains(Location))
+                        Global.Map.Blocks.Remove(Location);
 
-                    Global.EndLocation = Location;
+                    Global.Map.EndLocation = Location;
 
-                    if (Global.EndLocation.Equals(Global.StartLocation))
-                        Global.StartLocation = new Vector2(-1, -1);
+                    if (Global.Map.EndLocation.Equals(Global.Map.StartLocation))
+                        Global.Map.StartLocation = new Vector2(-1, -1);
 
                     animation.Play("End");
                     break;
 
                 case Constants.Route:
                     animation.Play("Route");
+                    break;
+
+                case Constants.Player:
+                    if (Global.Map.Blocks.Contains(Location))
+                        break;
+                    else if (Global.Map.StartLocation.Equals(Location))
+                        break;
+                    else if (Global.Map.EndLocation.Equals(Location))
+                        break;
+
+                    if (!Global.Player.Location.Equals(new Vector2(-1, -1)))
+                        Global.Grid[(int)Global.Player.Location.x, (int)Global.Player.Location.y].animation.Play("Clear");
+
+                    animation.Play("Player");
                     break;
             }
         }
